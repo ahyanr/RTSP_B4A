@@ -1,0 +1,124 @@
+﻿Build1=Default,b4a.example
+Group=Default Group
+IconFile=
+Library1=core
+Library2=vlcb4a
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="26"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=0
+NumberOfLibraries=2
+NumberOfModules=1
+Version=8
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: RTSP
+	#VersionCode: 1
+	#VersionName: RTSP Ahyan R
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: landscape
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: True
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	
+End Sub
+
+Sub Globals
+	Dim cam As VLCVideoView
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.AddMenuItem("CAM1","cam1")
+	Activity.AddMenuItem("CAM2","cam2")
+	Activity.AddMenuItem("CAM3","cam3")
+	Activity.AddMenuItem("CAM4","cam4")
+
+	ToastMessageShow("Tekan dan tahan tombol 'RECENT' untuk menampilkan menu.", True)
+	
+	cam.Initialize("cam")
+	Activity.AddView(cam, 0, 0, 100%x, 100%y)
+	cam.VideoURI = "alamat rtsp"
+	cam.RequestFocus
+	cam.Start
+End Sub
+
+Sub cam1_Click
+	'//SET ACTIVITY UNTUK VLC
+	Try
+		cam.RemoveView
+		cam.Initialize("cam1")
+		Activity.AddView(cam, 0, 0, 100%x, 100%y)
+		cam.VideoURI = "alamat rtsp"
+		cam.RequestFocus
+		cam.Start
+	Catch
+		Log(LastException.Message)
+	End Try
+End Sub
+
+Sub cam2_Click
+	'//SET ACTIVITY UNTUK VLC
+	Try
+		cam.RemoveView
+		cam.Initialize("cam2")
+		Activity.AddView(cam, 0, 0, 100%x, 100%y)
+		cam.VideoURI = "alamat rtsp"
+		cam.RequestFocus
+		cam.Start
+	Catch
+		Log(LastException.Message)
+	End Try
+End Sub
+
+Sub cam3_Click
+	'//SET ACTIVITY UNTUK VLC
+	Try
+		cam.RemoveView
+		cam.Initialize("cam3")
+		Activity.AddView(cam, 0, 0, 100%x, 100%y)
+		cam.VideoURI = "alamat rtsp"
+		cam.RequestFocus
+		cam.Start
+	Catch
+		Log(LastException.Message)
+	End Try
+End Sub
+
+Sub cam4_Click
+	'//SET ACTIVITY UNTUK VLC
+	Try
+		cam.RemoveView
+		cam.Initialize("cam4")
+		Activity.AddView(cam, 0, 0, 100%x, 100%y)
+		cam.VideoURI = "alamat rtsp"
+		cam.RequestFocus
+		cam.Start
+	Catch
+		Log(LastException.Message)
+	End Try
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Sub VLCVideoview1_onPrepared
+	'Log("VIDEO WAS PREPARED - IS IT PLAYING? " & VLCVideoview1.IsPlaying & " DURATION: " & VLCVideoview1.Duration)
+End Sub
+
+Sub VLCVideoview1_onError
+	Log("SOME ERROR OCCURRED")
+End Sub
+
+Sub VLCVideoview1_onCompleted
+	Log("VIDEO WAS COMPLETED")
+End Sub
